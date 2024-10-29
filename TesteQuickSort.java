@@ -1,6 +1,7 @@
 public class TesteQuickSort {
 
     int[] tamanhos = {100, 500, 1000}; // Defina os tamanhos de array para os testes
+    CSVLogger logger = new CSVLogger("dados_quicksort.csv"); // Cria uma nova instância de CSVLogger
 
     public void executarTestes() {
         // Gera e salva os arrays de teste
@@ -37,15 +38,15 @@ public class TesteQuickSort {
             // Exemplo para QuickSort Recursivo
             arrayLidoMelhorCaso = GeradorTeste.lerArrayDeArquivo("melhor_caso_" + tamanho);
             System.out.println("QuickSort Recursivo - Melhor Caso:");
-            QuickSortRecursivo.executarQuickSort(arrayLidoMelhorCaso);
+            QuickSortRecursivo.executarQuickSort(arrayLidoMelhorCaso, logger);
 
             arrayLidoCasoMedio = GeradorTeste.lerArrayDeArquivo("caso_medio_" + tamanho);
             System.out.println("QuickSort Recursivo - Caso Médio:");
-            QuickSortRecursivo.executarQuickSort(arrayLidoCasoMedio);
+            QuickSortRecursivo.executarQuickSort(arrayLidoCasoMedio, logger);
 
             arrayLidoPiorCaso = GeradorTeste.lerArrayDeArquivo("pior_caso_" + tamanho);
             System.out.println("QuickSort Recursivo - Pior Caso:");
-            QuickSortRecursivo.executarQuickSort(arrayLidoPiorCaso);
+            QuickSortRecursivo.executarQuickSort(arrayLidoPiorCaso, logger);
 
             // QuickSort com Insertion Sort
             arrayLidoMelhorCaso = GeradorTeste.lerArrayDeArquivo("melhor_caso_" + tamanho);
