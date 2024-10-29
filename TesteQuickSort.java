@@ -33,18 +33,18 @@ public class TesteQuickSort {
             System.out.println("QuickSort Mediana de Três - Pior Caso:");
             QuickSortMedianaDeTres.executarQuickSort(arrayLidoPiorCaso);
 
-            // Repita o processo para QuickSort Padrão e QuickSort com Insertion Sort
-            // Exemplo para QuickSort Padrão
+            // Repita o processo para QuickSort Recursivo e QuickSort com Insertion Sort
+            // Exemplo para QuickSort Recursivo
             arrayLidoMelhorCaso = GeradorTeste.lerArrayDeArquivo("melhor_caso_" + tamanho);
-            System.out.println("QuickSort Padrão - Melhor Caso:");
+            System.out.println("QuickSort Recursivo - Melhor Caso:");
             QuickSortRecursivo.executarQuickSort(arrayLidoMelhorCaso);
 
             arrayLidoCasoMedio = GeradorTeste.lerArrayDeArquivo("caso_medio_" + tamanho);
-            System.out.println("QuickSort Padrão - Caso Médio:");
+            System.out.println("QuickSort Recursivo - Caso Médio:");
             QuickSortRecursivo.executarQuickSort(arrayLidoCasoMedio);
 
             arrayLidoPiorCaso = GeradorTeste.lerArrayDeArquivo("pior_caso_" + tamanho);
-            System.out.println("QuickSort Padrão - Pior Caso:");
+            System.out.println("QuickSort Recursivo - Pior Caso:");
             QuickSortRecursivo.executarQuickSort(arrayLidoPiorCaso);
 
             // QuickSort com Insertion Sort
