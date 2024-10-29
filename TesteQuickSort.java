@@ -1,18 +1,18 @@
 public class TesteQuickSort {
 
-    public static void main(String[] args) {
-        int[] tamanhos = {100, 500, 1000}; // Defina os tamanhos de array para os testes
+    int[] tamanhos = {100, 500, 1000}; // Defina os tamanhos de array para os testes
 
+    public void executarTestes() {
         // Gera e salva os arrays de teste
-        // for (int tamanho : tamanhos) {
-        //     int[] melhorCaso = GeradorTeste.gerarMelhorCaso(tamanho);
-        //     int[] casoMedio = GeradorTeste.gerarCasoMedio(tamanho);
-        //     int[] piorCaso = GeradorTeste.gerarPiorCaso(tamanho);
+        for (int tamanho : tamanhos) {
+            int[] melhorCaso = GeradorTeste.gerarMelhorCaso(tamanho);
+            int[] casoMedio = GeradorTeste.gerarCasoMedio(tamanho);
+            int[] piorCaso = GeradorTeste.gerarPiorCaso(tamanho);
 
-        //     GeradorTeste.salvarArrayEmArquivo(melhorCaso, "melhor_caso");
-        //     GeradorTeste.salvarArrayEmArquivo(casoMedio, "caso_medio");
-        //     GeradorTeste.salvarArrayEmArquivo(piorCaso, "pior_caso");
-        // }
+            GeradorTeste.salvarArrayEmArquivo(melhorCaso, "melhor_caso_" + tamanho);
+            GeradorTeste.salvarArrayEmArquivo(casoMedio, "caso_medio_" + tamanho);
+            GeradorTeste.salvarArrayEmArquivo(piorCaso, "pior_caso_" + tamanho);
+        }
 
         // Testa cada algoritmo em cada tipo de caso e tamanho
         for (int tamanho : tamanhos) {
