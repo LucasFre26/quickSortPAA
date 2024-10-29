@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TesteQuickSort",
+            "request": "launch",
+            "mainClass": "TesteQuickSort",
+            "projectName": "PAA_4cf31fa7"
+        },
+        {
+            "type": "java",
             "name": "QuickSortInsertion",
             "request": "launch",
             "mainClass": "QuickSortInsertion",

@@ -7,13 +7,13 @@ import java.util.Random;
 
 class GeradorTeste {
 
-    // Função para salvar arrays no arquivo .txt
+    // Função para salvar arrays no arquivo .txt com o tamanho no nome do arquivo
     static void salvarArrayEmArquivo(int[] arr, String nomeArquivo) {
         try {
-            FileWriter writer = new FileWriter("test/" + nomeArquivo + ".txt");
+            FileWriter writer = new FileWriter("test/" + nomeArquivo + "_" + arr.length + ".txt");
             writer.write(Arrays.toString(arr));
             writer.close();
-            System.out.println("Array salvo no arquivo: " + nomeArquivo + ".txt");
+            System.out.println("Array salvo no arquivo: " + nomeArquivo + "_" + arr.length + ".txt");
         } catch (IOException e) {
             System.out.println("Erro ao salvar o arquivo.");
             e.printStackTrace();
