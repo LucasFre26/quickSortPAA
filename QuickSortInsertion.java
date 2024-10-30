@@ -3,7 +3,12 @@ import java.util.Random;
 class QuickSortInsertion {
     static int comparacoes = 0;
     static int trocas = 0;
-    static final int M = 10; // Inicializar com um valor de M, pode ser ajustado
+    private int M; // Valor de M agora é um atributo da classe
+
+    // Construtor que recebe o valor de M
+    public QuickSortInsertion(int M) {
+        this.M = M;
+    }
 
     // Função para realizar a partição do array
     static int partition(int[] arr, int low, int high) {
@@ -35,7 +40,7 @@ class QuickSortInsertion {
     }
 
     // Função para o Insertion Sort
-    static void insertionSort(int[] arr, int low, int high) {
+    void insertionSort(int[] arr, int low, int high) {
         for (int i = low + 1; i <= high; i++) {
             int key = arr[i];
             int j = i - 1;
@@ -50,7 +55,7 @@ class QuickSortInsertion {
     }
 
     // Função recursiva para ordenar o array
-    static void ordenar(int[] arr, int low, int high) {
+    void ordenar(int[] arr, int low, int high) {
         if (low < high) {
             // Se o tamanho do sub-vetor for menor que M, use Insertion Sort
             if (high - low + 1 < M) {
@@ -64,7 +69,7 @@ class QuickSortInsertion {
     }
 
     // Função para calcular o tempo de execução
-    static void executarQuickSort(int[] arr, CSVLogger logger) {
+    void executarQuickSort(int[] arr, CSVLogger logger) {
         comparacoes = 0;
         trocas = 0;
         long startTime = System.nanoTime(); // Marca o início
@@ -90,6 +95,4 @@ class QuickSortInsertion {
         }
         return arr;
     }
-
-    
 }
