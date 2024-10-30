@@ -64,7 +64,7 @@ class QuickSortInsertion {
     }
 
     // Função para calcular o tempo de execução
-    static void executarQuickSort(int[] arr) {
+    static void executarQuickSort(int[] arr, CSVLogger logger) {
         comparacoes = 0;
         trocas = 0;
         long startTime = System.nanoTime(); // Marca o início
@@ -73,6 +73,8 @@ class QuickSortInsertion {
 
         long endTime = System.nanoTime(); // Marca o fim
         long duracao = (endTime - startTime) / 1000000; // Tempo em milissegundos
+
+        logger.registrarDados(arr.length, comparacoes, trocas, duracao);
 
         System.out.println("Tempo de execução: " + duracao + " ms");
         System.out.println("Comparações: " + comparacoes);

@@ -1,65 +1,55 @@
 public class TesteQuickSort {
 
-    int[] tamanhos = {100, 500, 1000}; // Defina os tamanhos de array para os testes
-    CSVLogger logger = new CSVLogger("dados_quicksort.csv"); // Cria uma nova instância de CSVLogger
+    int[] tamanhos = {25, 50, 100, 250, 500, 750, 1000, 1250, 1500}; // Defina os tamanhos de array para os testes
+    CSVLogger logger_QuickSortRecursivo = new CSVLogger("dados_quicksortRecursivo.csv"); 
+    CSVLogger logger_QuickSortInsertion = new CSVLogger("dados_quicksortInsertion.csv"); 
+    CSVLogger logger_QuickSortMedianaTres = new CSVLogger("dados_quicksortMedianaTres.csv"); 
 
     public void executarTestes() {
-        // Gera e salva os arrays de teste
-        for (int tamanho : tamanhos) {
-            int[] melhorCaso = GeradorTeste.gerarMelhorCaso(tamanho);
-            int[] casoMedio = GeradorTeste.gerarCasoMedio(tamanho);
-            int[] piorCaso = GeradorTeste.gerarPiorCaso(tamanho);
-
-            GeradorTeste.salvarArrayEmArquivo(melhorCaso, "melhor_caso_" + tamanho);
-            GeradorTeste.salvarArrayEmArquivo(casoMedio, "caso_medio_" + tamanho);
-            GeradorTeste.salvarArrayEmArquivo(piorCaso, "pior_caso_" + tamanho);
-        }
-
         // Testa cada algoritmo em cada tipo de caso e tamanho
         for (int tamanho : tamanhos) {
             System.out.println("\nExecutando QuickSort para arrays de tamanho: " + tamanho);
 
-            // Lendo o array salvo para o melhor caso e executando o QuickSort Mediana de Três
-            int[] arrayLidoMelhorCaso = GeradorTeste.lerArrayDeArquivo("melhor_caso_" + tamanho);
+            // Inicializa QuickSortMedianaDeTres com um valor apropriado de M
+            int M = 10; // Defina o valor de M conforme necessário
+            QuickSortMedianaDeTres quickSortMedianaTres = new QuickSortMedianaDeTres(M);
+
+            // Gerando e executando QuickSort Mediana de Três para melhor caso
+            int[] melhorCaso = GeradorTeste.gerarMelhorCaso(tamanho);
             System.out.println("QuickSort Mediana de Três - Melhor Caso:");
-            QuickSortMedianaDeTres.executarQuickSort(arrayLidoMelhorCaso);
+            quickSortMedianaTres.executarQuickSort(melhorCaso, logger_QuickSortMedianaTres);
 
-            // Lendo o array salvo para o caso médio e executando o QuickSort Mediana de Três
-            int[] arrayLidoCasoMedio = GeradorTeste.lerArrayDeArquivo("caso_medio_" + tamanho);
+            // Gerando e executando QuickSort Mediana de Três para caso médio
+            int[] casoMedio = GeradorTeste.gerarCasoMedio(tamanho);
             System.out.println("QuickSort Mediana de Três - Caso Médio:");
-            QuickSortMedianaDeTres.executarQuickSort(arrayLidoCasoMedio);
+            quickSortMedianaTres.executarQuickSort(casoMedio, logger_QuickSortMedianaTres);
 
-            // Lendo o array salvo para o pior caso e executando o QuickSort Mediana de Três
-            int[] arrayLidoPiorCaso = GeradorTeste.lerArrayDeArquivo("pior_caso_" + tamanho);
+            // Gerando e executando QuickSort Mediana de Três para pior caso
+            int[] piorCaso = GeradorTeste.gerarPiorCaso(tamanho);
             System.out.println("QuickSort Mediana de Três - Pior Caso:");
-            QuickSortMedianaDeTres.executarQuickSort(arrayLidoPiorCaso);
+            quickSortMedianaTres.executarQuickSort(piorCaso, logger_QuickSortMedianaTres);
 
-            // Repita o processo para QuickSort Recursivo e QuickSort com Insertion Sort
-            // Exemplo para QuickSort Recursivo
-            arrayLidoMelhorCaso = GeradorTeste.lerArrayDeArquivo("melhor_caso_" + tamanho);
+            // Repete o processo para QuickSort Recursivo
+            QuickSortRecursivo quickSortRecursivo = new QuickSortRecursivo();
             System.out.println("QuickSort Recursivo - Melhor Caso:");
-            QuickSortRecursivo.executarQuickSort(arrayLidoMelhorCaso, logger);
+            quickSortRecursivo.executarQuickSort(melhorCaso, logger_QuickSortRecursivo);
 
-            arrayLidoCasoMedio = GeradorTeste.lerArrayDeArquivo("caso_medio_" + tamanho);
             System.out.println("QuickSort Recursivo - Caso Médio:");
-            QuickSortRecursivo.executarQuickSort(arrayLidoCasoMedio, logger);
+            quickSortRecursivo.executarQuickSort(casoMedio, logger_QuickSortRecursivo);
 
-            arrayLidoPiorCaso = GeradorTeste.lerArrayDeArquivo("pior_caso_" + tamanho);
             System.out.println("QuickSort Recursivo - Pior Caso:");
-            QuickSortRecursivo.executarQuickSort(arrayLidoPiorCaso, logger);
+            quickSortRecursivo.executarQuickSort(piorCaso, logger_QuickSortRecursivo);
 
             // QuickSort com Insertion Sort
-            arrayLidoMelhorCaso = GeradorTeste.lerArrayDeArquivo("melhor_caso_" + tamanho);
+            QuickSortInsertion quickSortInsertion = new QuickSortInsertion();
             System.out.println("QuickSort com Insertion Sort - Melhor Caso:");
-            QuickSortInsertion.executarQuickSort(arrayLidoMelhorCaso);
+            quickSortInsertion.executarQuickSort(melhorCaso, logger_QuickSortInsertion);
 
-            arrayLidoCasoMedio = GeradorTeste.lerArrayDeArquivo("caso_medio_" + tamanho);
             System.out.println("QuickSort com Insertion Sort - Caso Médio:");
-            QuickSortInsertion.executarQuickSort(arrayLidoCasoMedio);
+            quickSortInsertion.executarQuickSort(casoMedio, logger_QuickSortInsertion);
 
-            arrayLidoPiorCaso = GeradorTeste.lerArrayDeArquivo("pior_caso_" + tamanho);
             System.out.println("QuickSort com Insertion Sort - Pior Caso:");
-            QuickSortInsertion.executarQuickSort(arrayLidoPiorCaso);
+            quickSortInsertion.executarQuickSort(piorCaso, logger_QuickSortInsertion);
         }
     }
 }

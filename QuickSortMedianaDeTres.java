@@ -3,7 +3,12 @@ import java.util.Random;
 class QuickSortMedianaDeTres {
     static int comparacoes = 0;
     static int trocas = 0;
-    static int M = 10; // Valor inicial de M
+    private int M; // Valor de M agora é um atributo da classe
+
+    // Construtor que recebe o valor de M
+    public QuickSortMedianaDeTres(int M) {
+        this.M = M;
+    }
 
     // Função para realizar a partição do array
     static int partition(int[] arr, int low, int high) {
@@ -81,7 +86,7 @@ class QuickSortMedianaDeTres {
     }
 
     // Função recursiva para ordenar o array
-    static void ordenar(int[] arr, int low, int high) {
+    void ordenar(int[] arr, int low, int high) {
         if (low < high) {
             // Se o tamanho do sub-vetor for menor que M, use Insertion Sort
             if (high - low + 1 < M) {
@@ -95,7 +100,7 @@ class QuickSortMedianaDeTres {
     }
 
     // Função para calcular o tempo de execução
-    static void executarQuickSort(int[] arr) {
+    void executarQuickSort(int[] arr, CSVLogger logger) {
         comparacoes = 0;
         trocas = 0;
         long startTime = System.nanoTime(); // Marca o início
@@ -104,6 +109,8 @@ class QuickSortMedianaDeTres {
 
         long endTime = System.nanoTime(); // Marca o fim
         long duracao = (endTime - startTime) / 1000000; // Tempo em milissegundos
+
+        logger.registrarDados(arr.length, comparacoes, trocas, duracao);
 
         System.out.println("Tempo de execução: " + duracao + " ms");
         System.out.println("Comparações: " + comparacoes);
